@@ -1,923 +1,938 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
+<html lang="pt-BR"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quomion OS - Sistema Operacional do Futuro</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0a0a0f;
-            color: #e0e0e0;
-            line-height: 1.6;
+            background: #0a0a0f; color: #e0e0e0; line-height: 1.6;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
         header {
             background: linear-gradient(135deg, #0f0f1a 0%, #1a1a3e 50%, #0f0f1a 100%);
-            padding: 20px 0;
-            border-bottom: 2px solid #3a3aff;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            padding: 20px 0; border-bottom: 2px solid #3a3aff; position: sticky; top: 0; z-index: 100;
         }
-
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 800;
-            color: #fff;
-        }
-        .logo span {
-            color: #6a6aff;
-        }
-
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 10px; color: #fff; font-size: 28px; font-weight: 800; }
+        .logo img { height: 36px; width: auto; }
+        .logo span { color: #6a6aff; }
         nav a {
-            color: #aaa;
-            text-decoration: none;
-            margin-left: 25px;
-            font-weight: 500;
-            transition: color 0.3s;
+            color: #aaa; text-decoration: none; margin-left: 25px; font-weight: 500; transition: color 0.3s;
         }
-        nav a:hover {
-            color: #6a6aff;
-        }
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 28px;
-            cursor: pointer;
-        }
+        nav a:hover { color: #6a6aff; }
+        .menu-toggle { display: none; background: none; border: none; color: #fff; font-size: 28px; cursor: pointer; }
 
         .hero {
             background: linear-gradient(135deg, #0a0a1a 0%, #12123a 50%, #0a0a1a 100%);
-            text-align: center;
-            padding: 100px 20px 80px;
-            position: relative;
-            overflow: hidden;
+            text-align: center; padding: 100px 20px 80px; position: relative; overflow: hidden;
         }
         .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
             background: radial-gradient(circle at center, rgba(58, 58, 255, 0.05) 0%, transparent 70%);
             animation: pulse 8s ease-in-out infinite;
         }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 1; }
-        }
-
-        .hero h1 {
-            font-size: 52px;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        .hero h1 span {
-            color: #6a6aff;
-        }
-        .hero p {
-            font-size: 20px;
-            color: #aaa;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            position: relative;
-        }
+        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.2); opacity: 1; } }
+        .hero h1 { font-size: 52px; font-weight: 800; color: #fff; margin-bottom: 20px; position: relative; }
+        .hero h1 span { color: #6a6aff; }
+        .hero p { font-size: 20px; color: #aaa; max-width: 700px; margin: 0 auto 30px; position: relative; }
         .hero .btn {
-            display: inline-block;
-            padding: 15px 40px;
-            background: linear-gradient(135deg, #3a3aff, #6a3aff);
-            color: #fff;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 18px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
+            display: inline-block; padding: 15px 40px; background: linear-gradient(135deg, #3a3aff, #6a3aff);
+            color: #fff; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 18px;
+            transition: transform 0.3s, box-shadow 0.3s; position: relative; border: none; cursor: pointer;
         }
-        .hero .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(58, 58, 255, 0.4);
-        }
+        .hero .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(58, 58, 255, 0.4); }
 
-        section {
-            padding: 80px 0;
-        }
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 60px;
-        }
-        .section-title span {
-            color: #6a6aff;
-        }
+        section { padding: 80px 0; }
+        .section-title { text-align: center; font-size: 36px; font-weight: 700; color: #fff; margin-bottom: 60px; }
+        .section-title span { color: #6a6aff; }
 
-        #propriedades {
-            background: #0e0e1a;
-        }
-
-        .props-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-        }
-
+        #propriedades { background: #0e0e1a; }
+        .props-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
         .prop-card {
-            background: linear-gradient(145deg, #14142a, #1a1a35);
-            border: 1px solid #2a2a4a;
-            border-radius: 16px;
-            padding: 35px 25px;
-            text-align: center;
+            background: linear-gradient(145deg, #14142a, #1a1a35); border: 1px solid #2a2a4a;
+            border-radius: 16px; padding: 35px 25px; text-align: center;
             transition: transform 0.3s, border-color 0.3s;
         }
-        .prop-card:hover {
-            transform: translateY(-8px);
-            border-color: #6a6aff;
-        }
-        .prop-card .icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        .prop-card h3 {
-            font-size: 22px;
-            color: #fff;
-            margin-bottom: 12px;
-        }
-        .prop-card p {
-            color: #999;
-            font-size: 15px;
-        }
+        .prop-card:hover { transform: translateY(-8px); border-color: #6a6aff; }
+        .prop-card .icon { font-size: 48px; margin-bottom: 20px; }
+        .prop-card h3 { font-size: 22px; color: #fff; margin-bottom: 12px; }
+        .prop-card p { color: #999; font-size: 15px; }
 
-        #produtos {
-            background: #0a0a15;
-        }
-
-        .produtos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
+        #produtos { background: #0a0a15; }
+        .produtos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .produto-card {
-            background: linear-gradient(145deg, #14142a, #1a1a35);
-            border: 1px solid #2a2a4a;
-            border-radius: 16px;
-            padding: 30px;
-            transition: transform 0.3s, border-color 0.3s;
+            background: linear-gradient(145deg, #14142a, #1a1a35); border: 1px solid #2a2a4a;
+            border-radius: 16px; padding: 30px; transition: transform 0.3s, border-color 0.3s;
         }
-        .produto-card:hover {
-            transform: translateY(-5px);
-            border-color: #6a6aff;
-        }
+        .produto-card:hover { transform: translateY(-5px); border-color: #6a6aff; }
         .produto-card .badge {
-            display: inline-block;
-            padding: 4px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 15px;
+            display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 12px;
+            font-weight: 700; text-transform: uppercase; margin-bottom: 15px;
         }
-        .badge-pc {
-            background: #2a3a6a;
-            color: #8ab4ff;
-        }
-        .badge-mobile {
-            background: #3a2a5a;
-            color: #c08aff;
-        }
-        .badge-ambos {
-            background: #2a4a3a;
-            color: #7affb4;
-        }
-        .produto-card h3 {
-            font-size: 24px;
-            color: #fff;
-            margin-bottom: 10px;
-        }
-        .produto-card p {
-            color: #999;
-            margin-bottom: 20px;
-        }
-        .produto-card ul {
-            list-style: none;
-        }
-        .produto-card ul li {
-            padding: 8px 0;
-            color: #bbb;
-            border-bottom: 1px solid #1f1f35;
-        }
-        .produto-card ul li::before {
-            content: '>';
-            color: #6a6aff;
-            font-weight: 700;
-            margin-right: 10px;
-        }
-        .produto-card .price {
-            margin-top: 20px;
-            font-size: 28px;
-            font-weight: 800;
-            color: #fff;
-        }
-        .produto-card .price span {
-            font-size: 14px;
-            color: #888;
-            font-weight: 400;
-        }
+        .badge-pc { background: #2a3a6a; color: #8ab4ff; }
+        .badge-mobile { background: #3a2a5a; color: #c08aff; }
+        .badge-ambos { background: #2a4a3a; color: #7affb4; }
+        .produto-card h3 { font-size: 24px; color: #fff; margin-bottom: 10px; }
+        .produto-card p { color: #999; margin-bottom: 20px; }
+        .produto-card ul { list-style: none; }
+        .produto-card ul li { padding: 8px 0; color: #bbb; border-bottom: 1px solid #1f1f35; }
+        .produto-card ul li::before { content: '>'; color: #6a6aff; font-weight: 700; margin-right: 10px; }
+        .produto-card .price { margin-top: 20px; font-size: 28px; font-weight: 800; color: #fff; }
+        .produto-card .price span { font-size: 14px; color: #888; font-weight: 400; }
         .produto-card .pix-badge {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 4px 14px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 700;
-            background: #1a3a2a;
-            color: #7affb4;
+            display: inline-block; margin-top: 12px; padding: 4px 14px; border-radius: 20px;
+            font-size: 11px; font-weight: 700; background: #1a3a2a; color: #7affb4;
         }
         .produto-card .comprar-btn {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 8px 28px;
-            background: linear-gradient(135deg, #3a3aff, #6a3aff);
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
+            display: inline-block; margin-top: 12px; padding: 8px 28px;
+            background: linear-gradient(135deg, #3a3aff, #6a3aff); color: #fff; border: none;
+            border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        .produto-card .comprar-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(58, 58, 255, 0.4);
-        }
+        .produto-card .comprar-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(58, 58, 255, 0.4); }
 
-        #contato {
-            background: #0e0e1a;
-            text-align: center;
+        #beneficios { background: #0e0e1a; }
+        .beneficio-card {
+            background: linear-gradient(145deg, #14142a, #1a1a35); border: 1px solid #2a2a4a;
+            border-radius: 16px; padding: 30px; margin-bottom: 20px; display: flex; gap: 20px;
+            align-items: flex-start; transition: border-color 0.3s;
         }
-        #contato p {
-            color: #999;
-            max-width: 500px;
-            margin: 0 auto 30px;
-        }
-        .contato-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-        .contato-links a {
-            color: #6a6aff;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        .contato-links a:hover {
-            color: #fff;
-        }
+        .beneficio-card:hover { border-color: #6a6aff; }
+        .beneficio-card .icon { font-size: 36px; flex-shrink: 0; width: 50px; text-align: center; }
+        .beneficio-card .content h3 { color: #fff; font-size: 20px; margin-bottom: 6px; }
+        .beneficio-card .content p { color: #bbb; font-size: 14px; }
+        .beneficio-card .content ul { list-style: none; margin-top: 8px; }
+        .beneficio-card .content ul li { color: #999; padding: 3px 0; font-size: 13px; }
+        .beneficio-card .content ul li::before { content: '>'; color: #6a6aff; font-weight: 700; margin-right: 8px; }
 
-        footer {
-            background: #05050a;
-            text-align: center;
-            padding: 30px 20px;
-            color: #555;
-            font-size: 14px;
-            border-top: 1px solid #1a1a2e;
-        }
-        footer a {
-            color: #6a6aff;
-            text-decoration: none;
-        }
-        footer a:hover {
-            color: #aaa;
-        }
+        #contato { background: #0e0e1a; text-align: center; }
+        #contato p { color: #999; max-width: 500px; margin: 0 auto 30px; }
+        .contato-links { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .contato-links a { color: #6a6aff; text-decoration: none; font-size: 18px; font-weight: 600; transition: color 0.3s; }
+        .contato-links a:hover { color: #fff; }
 
-        /* ─── Admin Modal ─── */
+        footer { background: #05050a; text-align: center; padding: 30px 20px; color: #555; font-size: 14px; border-top: 1px solid #1a1a2e; }
+        footer a { color: #6a6aff; text-decoration: none; }
+        footer a:hover { color: #aaa; }
+
+        /* --- MODAL LOGIN --- */
         .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center;
         }
-        .modal-overlay.show {
-            display: flex;
-        }
-
+        .modal-overlay.show { display: flex; }
         .modal {
-            background: linear-gradient(145deg, #14142a, #1a1a35);
-            border: 1px solid #2a2a4a;
-            border-radius: 16px;
-            padding: 40px;
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-            position: relative;
+            background: linear-gradient(145deg, #14142a, #1a1a35); border: 1px solid #2a2a4a;
+            border-radius: 16px; padding: 40px; width: 100%; max-width: 420px; text-align: center; position: relative;
         }
-        .modal .close {
-            position: absolute;
-            top: 12px;
-            right: 18px;
-            color: #555;
-            font-size: 22px;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-        .modal .close:hover {
-            color: #fff;
-        }
-        .modal h2 {
-            color: #fff;
-            margin-bottom: 10px;
-        }
-        .modal p {
-            color: #888;
-            margin-bottom: 25px;
-            font-size: 14px;
-        }
+        .modal { position: relative; }
+        .modal .close { position: absolute; top: 12px; right: 16px; color: #888; font-size: 24px; cursor: pointer; background: none; border: none; line-height: 1; padding: 4px 8px; border-radius: 6px; transition: 0.3s; z-index: 10; }
+        .modal .close:hover { color: #fff; background: rgba(255,255,255,0.1); }
+        .modal .close:hover { color: #fff; }
+        .modal h2 { color: #fff; margin-bottom: 10px; font-size: 24px; }
+        .modal p { color: #888; margin-bottom: 25px; font-size: 14px; }
         .modal input {
-            width: 100%;
-            padding: 14px;
-            border: 1px solid #2a2a4a;
-            border-radius: 8px;
-            background: #0e0e1a;
-            color: #e0e0e0;
-            font-size: 16px;
-            margin-bottom: 15px;
-            outline: none;
+            width: 100%; padding: 14px; border: 1px solid #2a2a4a; border-radius: 8px;
+            background: #0e0e1a; color: #e0e0e0; font-size: 16px; margin-bottom: 15px; outline: none;
         }
-        .modal input:focus {
-            border-color: #6a6aff;
-        }
+        .modal input:focus { border-color: #6a6aff; }
         .modal button {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #3a3aff, #6a3aff);
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
+            width: 100%; padding: 14px; background: linear-gradient(135deg, #3a3aff, #6a3aff);
+            color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer;
         }
-        .modal button:hover {
-            box-shadow: 0 5px 20px rgba(58, 58, 255, 0.4);
-        }
-        .modal .erro {
-            color: #ff4a4a;
-            margin-top: 10px;
-            font-size: 14px;
-            display: none;
-        }
-        .modal .divider {
-            display: flex;
-            align-items: center;
-            margin: 20px 0;
-            color: #555;
-            font-size: 13px;
-        }
-        .modal .divider::before,
-        .modal .divider::after {
-            content: '';
-            flex: 1;
-            border-bottom: 1px solid #2a2a4a;
-        }
-        .modal .divider::before { margin-right: 15px; }
-        .modal .divider::after { margin-left: 15px; }
+        .modal button:hover { box-shadow: 0 5px 20px rgba(58, 58, 255, 0.4); }
+        .modal .erro { color: #ff4a4a; margin-top: 12px; font-size: 14px; display: none; }
 
-        #googleBtn {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 5px;
-        }
-
-        /* ─── Admin Dashboard ─── */
-        #adminPanel {
-            display: none;
-        }
-        #adminPanel.show {
-            display: block;
-        }
-
+        /* --- ADMIN PANEL --- */
+        #adminPanel { display: none; background: #0a0a0f; min-height: 100vh; }
+        #adminPanel.show { display: block; }
         .admin-header {
-            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a3e 50%, #0f0f1a 100%);
-            padding: 15px 0;
-            border-bottom: 2px solid #3a3aff;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2a 100%);
+            padding: 15px 0; border-bottom: 2px solid #6a3aff;
         }
-        .admin-header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .admin-header .logo small {
-            font-size: 12px;
-            font-weight: 400;
-            color: #888;
-        }
+        .admin-header .container { display: flex; justify-content: space-between; align-items: center; }
+        .admin-header .logo small { font-size: 12px; font-weight: 400; color: #888; }
+        .admin-header .admin-user { color: #aaa; font-size: 13px; }
         .admin-header button {
-            padding: 8px 18px;
-            background: #2a2a4a;
-            color: #e0e0e0;
-            border: 1px solid #3a3a5a;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            margin-left: 8px;
+            padding: 8px 18px; background: #2a2a4a; color: #e0e0e0; border: 1px solid #3a3a5a;
+            border-radius: 6px; cursor: pointer; font-size: 14px; margin-left: 8px;
         }
-        .admin-header button:hover {
-            background: #3a3a5a;
-        }
+        .admin-header button:hover { background: #3a3a5a; }
+        .admin-header .btn-danger { background: #4a1a2a; border-color: #6a2a3a; }
+        .admin-header .btn-danger:hover { background: #6a2a3a; }
 
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+        .admin-body { display: flex; min-height: calc(100vh - 60px); }
+
+        .admin-sidebar {
+            width: 220px; background: #0e0e1a; border-right: 1px solid #1a1a2e; padding: 20px 0; flex-shrink: 0;
         }
+        .admin-sidebar .s-item {
+            padding: 12px 24px; color: #888; cursor: pointer; font-size: 14px; font-weight: 500;
+            border-left: 3px solid transparent; transition: 0.3s; display: flex; align-items: center; gap: 10px;
+        }
+        .admin-sidebar .s-item:hover { color: #ccc; background: #12122a; }
+        .admin-sidebar .s-item.ativo { color: #6a6aff; border-left-color: #6a6aff; background: #14142a; }
+
+        .admin-content { flex: 1; padding: 30px; overflow-y: auto; }
+        .admin-content h2 { font-size: 22px; color: #fff; margin-bottom: 20px; }
+        .admin-content h2 span { color: #6a6aff; }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin-bottom: 30px; }
         .stat-card {
-            background: linear-gradient(145deg, #14142a, #1a1a35);
-            border: 1px solid #2a2a4a;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
+            background: linear-gradient(145deg, #14142a, #1a1a35); border: 1px solid #2a2a4a;
+            border-radius: 12px; padding: 20px; text-align: center;
         }
-        .stat-card .numero {
-            font-size: 32px;
-            font-weight: 800;
-            color: #6a6aff;
-        }
-        .stat-card .rotulo {
-            color: #888;
-            font-size: 13px;
-            margin-top: 5px;
-        }
-
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
-        .tab {
-            padding: 10px 20px;
-            background: #1a1a2e;
-            border: 1px solid #2a2a4a;
-            border-radius: 8px;
-            color: #aaa;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-        .tab:hover {
-            border-color: #6a6aff;
-            color: #fff;
-        }
-        .tab.ativo {
-            background: #2a2a5a;
-            border-color: #6a6aff;
-            color: #6a6aff;
-        }
-
-        .tab-content {
-            display: none;
-        }
-        .tab-content.ativo {
-            display: block;
-        }
+        .stat-card .numero { font-size: 32px; font-weight: 800; color: #6a6aff; }
+        .stat-card .rotulo { color: #888; font-size: 13px; margin-top: 5px; }
 
         .card {
-            background: linear-gradient(145deg, #14142a, #1a1a35);
-            border: 1px solid #2a2a4a;
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 20px;
+            background: linear-gradient(145deg, #14142a, #1a1a35); border: 1px solid #2a2a4a;
+            border-radius: 12px; padding: 25px; margin-bottom: 25px;
         }
-        .card h3 {
-            color: #fff;
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-        .card textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #2a2a4a;
-            border-radius: 8px;
-            background: #0e0e1a;
-            color: #e0e0e0;
-            font-size: 14px;
-            font-family: inherit;
-            resize: vertical;
-            min-height: 80px;
-            outline: none;
-            margin-bottom: 10px;
-        }
-        .card textarea:focus { border-color: #6a6aff; }
-        .card input[type="text"],
-        .card input[type="number"],
-        .card input[type="color"] {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #2a2a4a;
-            border-radius: 8px;
-            background: #0e0e1a;
-            color: #e0e0e0;
-            font-size: 14px;
-            outline: none;
-            margin-bottom: 10px;
+        .card h3 { color: #fff; font-size: 18px; margin-bottom: 15px; }
+        .card label { color: #aaa; font-size: 13px; display: block; margin-bottom: 5px; }
+        .card input[type="text"], .card input[type="password"], .card input[type="email"], .card input[type="number"] {
+            width: 100%; padding: 12px; border: 1px solid #2a2a4a; border-radius: 8px;
+            background: #0e0e1a; color: #e0e0e0; font-size: 14px; outline: none; margin-bottom: 12px;
         }
         .card input:focus { border-color: #6a6aff; }
-        .card input[type="color"] {
-            width: 60px;
-            height: 40px;
-            padding: 2px;
-            cursor: pointer;
+        .card textarea {
+            width: 100%; padding: 12px; border: 1px solid #2a2a4a; border-radius: 8px;
+            background: #0e0e1a; color: #e0e0e0; font-size: 14px; font-family: 'Consolas', 'Courier New', monospace;
+            resize: vertical; min-height: 120px; outline: none; margin-bottom: 12px;
         }
+        .card textarea:focus { border-color: #6a6aff; }
+        .card select {
+            width: 100%; padding: 12px; border: 1px solid #2a2a4a; border-radius: 8px;
+            background: #0e0e1a; color: #e0e0e0; font-size: 14px; outline: none; margin-bottom: 12px;
+        }
+        .card .btn {
+            padding: 10px 24px; background: linear-gradient(135deg, #3a3aff, #6a3aff); color: #fff;
+            border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; margin-right: 8px;
+        }
+        .card .btn:hover { box-shadow: 0 4px 15px rgba(58, 58, 255, 0.4); }
+        .card .btn-danger { background: linear-gradient(135deg, #cf3a3a, #a02a2a); }
+        .card .btn-success { background: linear-gradient(135deg, #2a9a4a, #1a7a3a); }
+        .card .btn-warning { background: linear-gradient(135deg, #cf8a3a, #a06a2a); }
+        .card .btn-sm { padding: 4px 12px; border-radius: 6px; border: none; cursor: pointer; font-size: 12px; font-weight: 600; margin-right: 4px; }
 
-        .btn {
-            padding: 10px 24px;
-            background: linear-gradient(135deg, #3a3aff, #6a3aff);
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-        .btn:hover { box-shadow: 0 4px 15px rgba(58, 58, 255, 0.4); }
-        .btn-danger { background: linear-gradient(135deg, #cf3a3a, #a02a2a); }
-        .btn-danger:hover { box-shadow: 0 4px 15px rgba(207, 58, 58, 0.4); }
-        .btn-success { background: linear-gradient(135deg, #2a9a4a, #1a7a3a); }
-        .btn-sm {
-            padding: 4px 12px;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: 600;
-            margin-right: 4px;
-        }
-
-        .tabela {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .tabela th, .tabela td {
-            padding: 12px 10px;
-            text-align: left;
-            border-bottom: 1px solid #1f1f35;
-            font-size: 14px;
-        }
+        .tabela { width: 100%; border-collapse: collapse; }
+        .tabela th, .tabela td { padding: 12px 10px; text-align: left; border-bottom: 1px solid #1f1f35; font-size: 14px; }
         .tabela th { color: #888; font-weight: 600; }
-        .tabela td { color: #ccc; }
+        .tabela td { color: #ccc; word-break: break-all; }
         .tabela tr:hover td { background: #12122a; }
 
-        .badge-ban {
-            display: inline-block;
-            padding: 2px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 700;
-        }
-        .badge-ban.banido { background: #4a1a1a; color: #ff6a6a; }
-        .badge-ban.liberado { background: #1a3a2a; color: #6aff8a; }
+        .badge-status { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 700; }
+        .badge-blocked { background: #4a1a1a; color: #ff6a6a; }
+        .badge-allowed { background: #1a3a2a; color: #6aff8a; }
+        .badge-pending { background: #3a3a1a; color: #ffcc6a; }
 
-        .vazio {
-            text-align: center;
-            color: #555;
-            padding: 40px;
-            font-size: 16px;
+        .vazio { text-align: center; color: #555; padding: 40px; font-size: 16px; }
+
+        .alert {
+            padding: 12px 16px; border-radius: 8px; margin-bottom: 15px; font-size: 14px; display: none;
         }
+        .alert.show { display: block; }
+        .alert-success { background: #1a3a2a; color: #6aff8a; border: 1px solid #2a4a3a; }
+        .alert-danger { background: #4a1a1a; color: #ff6a6a; border: 1px solid #6a2a2a; }
+        .alert-info { background: #1a2a3a; color: #6aafff; border: 1px solid #2a3a4a; }
+
+        .form-row { display: flex; gap: 15px; flex-wrap: wrap; }
+        .form-row > * { flex: 1; min-width: 200px; }
+
+        /* --- BLOCKED PAGE --- */
+        #blockedPage {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #0a0a0f; z-index: 2000; align-items: center; justify-content: center; flex-direction: column;
+            text-align: center; padding: 40px;
+        }
+        #blockedPage.show { display: flex; }
+        #blockedPage h1 { font-size: 64px; color: #ff4a4a; margin-bottom: 20px; }
+        #blockedPage p { color: #888; font-size: 18px; max-width: 500px; }
+        #blockedPage .icon { font-size: 80px; margin-bottom: 20px; }
 
         @media (max-width: 768px) {
             header .container { flex-wrap: wrap; }
-            nav {
-                display: none;
-                width: 100%;
-                margin-top: 15px;
-                flex-direction: column;
-                text-align: center;
-            }
+            nav { display: none; width: 100%; margin-top: 15px; flex-direction: column; text-align: center; }
             nav.show { display: flex; }
             nav a { margin: 8px 0; }
             .menu-toggle { display: block; }
             .hero h1 { font-size: 32px; }
             .hero p { font-size: 16px; }
             .section-title { font-size: 28px; }
-            .props-grid { grid-template-columns: 1fr; }
-            .produtos-grid { grid-template-columns: 1fr; }
+            .props-grid, .produtos-grid { grid-template-columns: 1fr; }
             .contato-links { flex-direction: column; gap: 15px; }
             section { padding: 50px 0; }
             .hero { padding: 60px 20px 50px; }
-            .stats { grid-template-columns: repeat(2, 1fr); }
             .modal { margin: 20px; padding: 30px; }
-            .card { padding: 18px; }
+            .admin-sidebar { display: none; }
+            .admin-sidebar.show { display: block; position: fixed; width: 100%; z-index: 500; }
+            .admin-content { padding: 20px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .tabela th, .tabela td { padding: 8px 6px; font-size: 12px; }
+            .admin-header .container { flex-wrap: wrap; gap: 10px; }
+            .admin-header .admin-actions { display: flex; flex-wrap: wrap; }
         }
     </style>
-</head>
+<style id="dynamicTheme">
+                .logo span, .section-title span, .hero h1 span,
+                .admin-sidebar .s-item.ativo, .stat-card .numero,
+                .produto-card ul li::before, .beneficio-card .content ul li::before,
+                .contato-links a, footer a, .modal input:focus, .card input:focus,
+                .card textarea:focus {
+                    color: #6a6aff !important;
+                }
+                header, .admin-header {
+                    border-bottom-color: #6a6aff !important;
+                }
+                .hero .btn, .modal button, .card .btn:not(.btn-danger):not(.btn-success):not(.btn-warning),
+                .produto-card .comprar-btn, .hero .btn {
+                    background: linear-gradient(135deg, #3a3aff, #6a6aff) !important;
+                }
+                .hero .btn:hover, .modal button:hover, .card .btn:hover {
+                    box-shadow: 0 4px 15px #6a6aff66 !important;
+                }
+            </style></head>
 <body>
-    <!-- ─── SITE ─── -->
-    <header>
-        <div class="container">
-            <div class="logo">Quomion<span>OS</span></div>
-            <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('show')">☰</button>
-            <nav>
-                <a href="#propriedades">Propriedades</a>
-                <a href="#produtos">Produtos</a>
-                <a href="#keys">Keys</a>
-                <a href="#contato">Contato</a>
-            </nav>
-        </div>
-    </header>
+    <!-- ─── PÁGINA DE BLOQUEIO ─── -->
+    <div id="blockedPage">
+        <div class="icon">🚫</div>
+        <h1>ACESSO BLOQUEADO</h1>
+        <p>Esta máquina foi restrita pelo administrador do Quomion OS. Entre em contato para mais informações.</p>
+    </div>
 
-    <section class="hero">
-        <h1>O Futuro é <span>Quomion</span></h1>
-        <p>Um sistema operacional leve, seguro e moderno, projetado para oferecer o máximo de desempenho tanto no seu PC quanto no seu celular.</p>
-        <a href="#produtos" class="btn">Conheça os Produtos</a>
-    </section>
-
-    <section id="propriedades">
-        <div class="container">
-            <h2 class="section-title">Propriedades do <span>Quomion OS</span></h2>
-            <div class="props-grid">
-                <div class="prop-card"><div class="icon">⚡</div><h3>Alta Performance</h3><p>Núcleo otimizado que entrega velocidade máxima em qualquer hardware, de máquinas antigas aos dispositivos mais modernos.</p></div>
-                <div class="prop-card"><div class="icon">🔒</div><h3>Segurança Total</h3><p>Arquitetura isolada com criptografia de ponta a ponta, protegendo seus dados contra ameaças e invasões.</p></div>
-                <div class="prop-card"><div class="icon">🎨</div><h3>Interface Adaptável</h3><p>Design fluido que se adapta perfeitamente à sua tela, seja em um monitor de 27" ou na tela de um smartphone.</p></div>
-                <div class="prop-card"><div class="icon">📦</div><h3>Ecosistema Leve</h3><p>Apps nativos ultra rápidos e um gerenciador de pacotes inteligente que ocupa pouquíssimo espaço.</p></div>
-                <div class="prop-card"><div class="icon">🔄</div><h3>Atualizações Contínuas</h3><p>Receba atualizações frequentes com novos recursos, correções de segurança e melhorias de desempenho.</p></div>
-                <div class="prop-card"><div class="icon">🌐</div><h3>Multiplataforma</h3><p>Funciona em PCs (x86/x64) e dispositivos móveis (ARM), com suporte nativo a redes 4G/5G e Wi-Fi.</p></div>
-                <div class="prop-card"><div class="icon">🔋</div><h3>Eficiência Energética</h3><p>Gerenciamento inteligente de energia que prolonga a bateria do seu notebook ou celular.</p></div>
-                <div class="prop-card"><div class="icon">🧩</div><h3>Compatibilidade Total</h3><p>Suporte a aplicativos Android, Linux e Windows via camada de compatibilidade nativa.</p></div>
+    <!-- ─── SITE PÚBLICO ─── -->
+    <div id="publicSite" style="display: none;">
+        <header>
+            <div class="container">
+                <div class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="36" height="36">
+                        <defs>
+                            <linearGradient id="qGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#007AFF"></stop>
+                                <stop offset="50%" stop-color="#5AC8FA"></stop>
+                                <stop offset="100%" stop-color="#AF52DE"></stop>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="60" cy="60" r="58" fill="url(#qGrad)" opacity=".08"></circle>
+                        <circle cx="60" cy="60" r="48" fill="url(#qGrad)" opacity=".15"></circle>
+                        <circle cx="60" cy="60" r="38" fill="url(#qGrad)" opacity=".25"></circle>
+                        <g fill="url(#qGrad)">
+                            <path d="M60 24c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16h4v-8h-4c-4.4 0-8-3.6-8-8V40c0-4.4 3.6-8 8-8h16c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8h-8l-8 8h8c8.8 0 16-7.2 16-16V40c0-8.8-7.2-16-16-16H60z" transform="rotate(45,60,60)"></path>
+                            <circle cx="68" cy="52" r="4"></circle>
+                        </g>
+                    </svg>
+                    Quomion<span>OS</span>
+                </div>
+                <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('show')">☰</button>
+                <nav>
+                    <a href="#propriedades">Propriedades</a>
+                    <a href="#produtos">Produtos</a>
+                    <a href="#keys">Keys</a>
+                    <a href="#beneficios">Benefícios</a>
+                    <a href="#contato">Contato</a>
+                    <a href="#" onclick="abrirModalAdmin();return false;" style="color:#6a6aff;">⚙️ Admin</a>
+                </nav>
             </div>
-        </div>
-    </section>
+        </header>
 
-    <section id="produtos">
-        <div class="container">
-            <h2 class="section-title">Nossos <span>Produtos</span></h2>
-            <div class="produtos-grid">
-                <div class="produto-card">
-                    <span class="badge badge-pc">PC</span>
-                    <h3>Quomion OS Desktop</h3>
-                    <p>Sistema completo para computadores, ideal para trabalho, jogos e desenvolvimento.</p>
-                    <ul>
-                        <li>Interface desktop completa com multitarefa</li>
-                        <li>Suporte a monitores múltiplos</li>
-                        <li>Terminal nativo com PowerShell e Bash</li>
-                        <li>Loja de aplicativos exclusiva</li>
-                        <li>Driver NVIDIA/AMD otimizado</li>
-                    </ul>
-                    <div class="price">Grátis <span>para uso pessoal</span></div>
-                    <div><span class="pix-badge">💳 PIX</span></div>
-                </div>
-                <div class="produto-card">
-                    <span class="badge badge-mobile">Mobile</span>
-                    <h3>Quomion OS Mobile</h3>
-                    <p>Versão leve e inteligente para smartphones, com foco em fluidez e privacidade.</p>
-                    <ul>
-                        <li>Gestos intuitivos e navegação fluida</li>
-                        <li>Modo noturno adaptativo</li>
-                        <li>Gerenciamento inteligente de RAM</li>
-                        <li>Suporte a eSIM e Dual SIM</li>
-                        <li>Câmera com processamento IA nativo</li>
-                    </ul>
-                    <div class="price">Grátis <span>código aberto</span></div>
-                    <div><span class="pix-badge">💳 PIX</span></div>
-                </div>
-                <div class="produto-card">
-                    <span class="badge badge-ambos">PC + Mobile</span>
-                    <h3>Quomion Sync</h3>
-                    <p>Ecosistema de sincronização entre seus dispositivos para uma experiência unificada.</p>
-                    <ul>
-                        <li>Sincronização instantânea de arquivos</li>
-                        <li>Área de transferência compartilhada</li>
-                        <li>Chamadas e mensagens direto do PC</li>
-                        <li>Controle remoto do celular pelo desktop</li>
-                        <li>Cloud pessoal com 10GB grátis</li>
-                    </ul>
-                    <div class="price">Grátis <span>para todos</span></div>
-                    <div><span class="pix-badge">💳 PIX</span></div>
+        <section class="hero">
+            <h1 id="heroTitulo">O Futuro é Quomion <span>Quomion</span></h1>
+            <p id="heroDesc">Um sistema operacional leve, seguro e moderno, projetado para oferecer o máximo de desempenho tanto no seu PC quanto no seu celular.</p>
+            <a href="#produtos" class="btn">Conheça os Produtos</a>
+        </section>
+
+        <section id="propriedades">
+            <div class="container">
+                <h2 class="section-title">Propriedades do <span>Quomion OS</span></h2>
+                <div class="props-grid">
+                    <div class="prop-card"><div class="icon">⚡</div><h3>Alta Performance</h3><p>Núcleo otimizado que entrega velocidade máxima em qualquer hardware.</p></div>
+                    <div class="prop-card"><div class="icon">🔒</div><h3>Segurança Total</h3><p>Arquitetura isolada com criptografia de ponta a ponta.</p></div>
+                    <div class="prop-card"><div class="icon">🎨</div><h3>Interface Adaptável</h3><p>Design fluido que se adapta perfeitamente à sua tela.</p></div>
+                    <div class="prop-card"><div class="icon">📦</div><h3>Ecossistema Leve</h3><p>Apps nativos ultra rápidos que ocupam pouquíssimo espaço.</p></div>
+                    <div class="prop-card"><div class="icon">🔄</div><h3>Atualizações Contínuas</h3><p>Receba atualizações frequentes com novos recursos.</p></div>
+                    <div class="prop-card"><div class="icon">🌐</div><h3>Multiplataforma</h3><p>Funciona em PCs e dispositivos móveis com suporte nativo.</p></div>
+                    <div class="prop-card"><div class="icon">🔋</div><h3>Eficiência Energética</h3><p>Gerenciamento inteligente de energia.</p></div>
+                    <div class="prop-card"><div class="icon">🧩</div><h3>Compatibilidade Total</h3><p>Suporte a apps Android, Linux e Windows.</p></div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="keys">
-        <div class="container">
-            <h2 class="section-title">Keys <span>Premium</span></h2>
-            <p style="text-align:center;color:#999;max-width:600px;margin:0 auto 40px;">Desbloqueie recursos exclusivos do Quomion OS com nossas keys premium. De R$10 a R$200, escolha a que mais se encaixa no seu estilo.</p>
-            <div class="produtos-grid" id="keysGrid"></div>
-        </div>
-    </section>
-
-    <section id="contato">
-        <div class="container">
-            <h2 class="section-title">Redes <span>Sociais</span></h2>
-            <p style="color:#999;max-width:500px;margin:0 auto 30px;">Siga a gente no TikTok para ficar por dentro das novidades!</p>
-            <div class="contato-links">
-                <a href="https://tiktok.com/@quomionmania" target="_blank">🎵 @quomionmania</a>
+        <section id="produtos">
+            <div class="container">
+                <h2 class="section-title">Nossos <span>Produtos</span></h2>
+                <div class="produtos-grid">
+                    <div class="produto-card">
+                        <span class="badge badge-pc">PC</span>
+                        <h3>Quomion OS Desktop</h3>
+                        <p>Sistema completo para computadores.</p>
+                        <ul>
+                            <li>Interface desktop completa com multitarefa</li>
+                            <li>Suporte a monitores múltiplos</li>
+                            <li>Terminal nativo com PowerShell e Bash</li>
+                            <li>Loja de aplicativos exclusiva</li>
+                            <li>Driver NVIDIA/AMD otimizado</li>
+                        </ul>
+                        <div class="price">Grátis <span>para uso pessoal</span></div>
+                        <div><span class="pix-badge">💳 PIX</span></div>
+                    </div>
+                    <div class="produto-card">
+                        <span class="badge badge-mobile">Mobile</span>
+                        <h3>Quomion OS Mobile</h3>
+                        <p>Versão leve e inteligente para smartphones.</p>
+                        <ul>
+                            <li>Gestos intuitivos e navegação fluida</li>
+                            <li>Modo noturno adaptativo</li>
+                            <li>Gerenciamento inteligente de RAM</li>
+                            <li>Suporte a eSIM e Dual SIM</li>
+                            <li>Câmera com processamento IA nativo</li>
+                        </ul>
+                        <div class="price">Grátis <span>código aberto</span></div>
+                        <div><span class="pix-badge">💳 PIX</span></div>
+                    </div>
+                    <div class="produto-card">
+                        <span class="badge badge-ambos">PC + Mobile</span>
+                        <h3>Quomion Sync</h3>
+                        <p>Ecossistema de sincronização entre dispositivos.</p>
+                        <ul>
+                            <li>Sincronização instantânea de arquivos</li>
+                            <li>Área de transferência compartilhada</li>
+                            <li>Chamadas e mensagens direto do PC</li>
+                            <li>Controle remoto do celular pelo desktop</li>
+                            <li>Cloud pessoal com 10GB grátis</li>
+                        </ul>
+                        <div class="price">Grátis <span>para todos</span></div>
+                        <div><span class="pix-badge">💳 PIX</span></div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer>
-        <div class="container">
-            Quomion OS &copy; 2026 — Todos os direitos reservados.
-            <div style="margin-top:10px;font-size:11px;color:#333;">
-                <button onclick="abrirModalAdmin();return false" style="background:none;border:none;color:#333;cursor:pointer;font-size:11px;">⚙️</button>
+        <section id="beneficios">
+            <div class="container">
+                <h2 class="section-title">Benefícios do <span>Quomion OS</span></h2>
+                <div class="beneficio-card">
+                    <div class="icon">⚡</div>
+                    <div class="content">
+                        <h3>Velocidade Extrema</h3>
+                        <p>Inicialização em segundos e apps abrindo instantaneamente.</p>
+                        <ul><li>Boot em menos de 5 segundos em SSD</li><li>Gerenciamento inteligente de processos</li><li>Sem lags mesmo com multitarefa pesada</li></ul>
+                    </div>
+                </div>
+                <div class="beneficio-card">
+                    <div class="icon">🔒</div>
+                    <div class="content">
+                        <h3>Segurança de Ponta a Ponta</h3>
+                        <p>Arquitetura isolada com criptografia nativa.</p>
+                        <ul><li>Criptografia AES-256 em todos os arquivos</li><li>Firewall inteligente integrado</li><li>Atualizações de segurança automáticas</li></ul>
+                    </div>
+                </div>
+                <div class="beneficio-card">
+                    <div class="icon">🎨</div>
+                    <div class="content">
+                        <h3>Design Adaptável e Moderno</h3>
+                        <p>Interface que se adapta ao seu dispositivo.</p>
+                        <ul><li>Modo claro e escuro inteligente</li><li>Temas dinâmicos com cores personalizadas</li><li>Suporte a widgets interativos</li></ul>
+                    </div>
+                </div>
             </div>
-        </div>
-    </footer>
+        </section>
+
+        <section id="keys">
+            <div class="container">
+                <h2 class="section-title">Keys <span>Premium</span></h2>
+                <p style="text-align:center;color:#999;max-width:600px;margin:0 auto 40px;">Desbloqueie recursos exclusivos do Quomion OS com nossas keys premium.</p>
+                <div class="produtos-grid" id="keysGrid">
+                <div class="produto-card">
+                    <span class="badge badge-ambos">R$ 10</span>
+                    <h3>Key Starter</h3>
+                    <div class="price">R$ 10,00</div>
+                    <div style="margin-top:12px;">
+                        <span class="pix-badge">💳 PIX</span>
+                        <button class="comprar-btn" onclick="comprarKey('Key Starter', 10)">Comprar</button>
+                    </div>
+                </div>
+            
+                <div class="produto-card">
+                    <span class="badge badge-ambos">R$ 30</span>
+                    <h3>Key Performance</h3>
+                    <div class="price">R$ 30,00</div>
+                    <div style="margin-top:12px;">
+                        <span class="pix-badge">💳 PIX</span>
+                        <button class="comprar-btn" onclick="comprarKey('Key Performance', 30)">Comprar</button>
+                    </div>
+                </div>
+            
+                <div class="produto-card">
+                    <span class="badge badge-ambos">R$ 50</span>
+                    <h3>Key Security</h3>
+                    <div class="price">R$ 50,00</div>
+                    <div style="margin-top:12px;">
+                        <span class="pix-badge">💳 PIX</span>
+                        <button class="comprar-btn" onclick="comprarKey('Key Security', 50)">Comprar</button>
+                    </div>
+                </div>
+            
+                <div class="produto-card">
+                    <span class="badge badge-ambos">R$ 80</span>
+                    <h3>Key Developer</h3>
+                    <div class="price">R$ 80,00</div>
+                    <div style="margin-top:12px;">
+                        <span class="pix-badge">💳 PIX</span>
+                        <button class="comprar-btn" onclick="comprarKey('Key Developer', 80)">Comprar</button>
+                    </div>
+                </div>
+            
+                <div class="produto-card">
+                    <span class="badge badge-ambos">R$ 120</span>
+                    <h3>Key Ultimate Mobile</h3>
+                    <div class="price">R$ 120,00</div>
+                    <div style="margin-top:12px;">
+                        <span class="pix-badge">💳 PIX</span>
+                        <button class="comprar-btn" onclick="comprarKey('Key Ultimate Mobile', 120)">Comprar</button>
+                    </div>
+                </div>
+            
+                <div class="produto-card">
+                    <span class="badge badge-ambos">R$ 200</span>
+                    <h3>Key Enterprise</h3>
+                    <div class="price">R$ 200,00</div>
+                    <div style="margin-top:12px;">
+                        <span class="pix-badge">💳 PIX</span>
+                        <button class="comprar-btn" onclick="comprarKey('Key Enterprise', 200)">Comprar</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section id="contato">
+            <div class="container">
+                <h2 class="section-title">Redes <span>Sociais</span></h2>
+                <p>Siga a gente no TikTok!</p>
+                <div class="contato-links">
+                    <a href="https://tiktok.com/@quomionmania" target="_blank">🎵 @quomionmania</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                Quomion OS © 2026 — Todos os direitos reservados.
+            </div>
+        </footer>
+    </div>
 
     <!-- ─── MODAL LOGIN ADMIN ─── -->
     <div class="modal-overlay" id="modalAdmin">
         <div class="modal">
             <button class="close" onclick="fecharModalAdmin()">✕</button>
-            <h2>🔐 Painel Admin</h2>
-            <p>Digite a senha ou seu e-mail de administrador.</p>
-            <div id="googleBtn"></div>
-            <div class="divider">ou</div>
-            <input type="text" id="senhaInput" placeholder="Senha ou e-mail admin" onkeydown="if(event.key==='Enter')entrarAdmin()">
-            <button onclick="entrarAdmin()">Entrar</button>
-            <div class="erro" id="erroLogin">Senha ou e-mail incorreto!</div>
+            <h2>🔐 Painel Administrativo</h2>
+            <p>Faça login para gerenciar o Quomion OS.</p>
+            <div id="erroLogin" class="erro" style="display:none;">Credenciais inválidas!</div>
+            <input type="email" id="loginEmail" placeholder="E-mail de admin">
+            <input type="password" id="loginSenha" placeholder="Senha" onkeydown="if(event.key==='Enter')entrarAdmin()">
+            <button onclick="entrarAdmin()">Entrar no Painel</button>
+            <div style="margin-top:15px;font-size:12px;color:#555;">Apenas administradores autorizados.</div>
         </div>
     </div>
 
     <!-- ─── PAINEL ADMIN ─── -->
-    <div id="adminPanel">
+    <div id="adminPanel" class="show" style="display: block;">
         <div class="admin-header">
             <div class="container">
-                <div class="logo">Quomion<span>OS</span> <small>Admin</small></div>
-                <div>
+                <div class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32">
+                        <defs>
+                            <linearGradient id="qGradA" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#007AFF"></stop>
+                                <stop offset="50%" stop-color="#5AC8FA"></stop>
+                                <stop offset="100%" stop-color="#AF52DE"></stop>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="60" cy="60" r="58" fill="url(#qGradA)" opacity=".08"></circle>
+                        <circle cx="60" cy="60" r="48" fill="url(#qGradA)" opacity=".15"></circle>
+                        <circle cx="60" cy="60" r="38" fill="url(#qGradA)" opacity=".25"></circle>
+                        <g fill="url(#qGradA)">
+                            <path d="M60 24c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16h4v-8h-4c-4.4 0-8-3.6-8-8V40c0-4.4 3.6-8 8-8h16c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8h-8l-8 8h8c8.8 0 16-7.2 16-16V40c0-8.8-7.2-16-16-16H60z" transform="rotate(45,60,60)"></path>
+                            <circle cx="68" cy="52" r="4"></circle>
+                        </g>
+                    </svg>
+                    Quomion<span>OS</span> <small>Painel Admin</small>
+                </div>
+                <div class="admin-actions">
+                    <span class="admin-user" id="adminUserInfo">👤 Admin Master</span>
                     <button onclick="voltarSite()">🌐 Ver Site</button>
-                    <button onclick="sairAdmin()">🚪 Sair</button>
+                    <button class="btn-danger" onclick="sairAdmin()">🚪 Sair</button>
                 </div>
             </div>
         </div>
-
-        <div class="container" style="padding:30px 20px;">
-            <div class="stats">
-                <div class="stat-card"><div class="numero" id="statVotos">0</div><div class="rotulo">Total de Votos</div></div>
-                <div class="stat-card"><div class="numero" id="statSim">0</div><div class="rotulo">Sim (Quobile)</div></div>
-                <div class="stat-card"><div class="numero" id="statNao">0</div><div class="rotulo">Não</div></div>
-                <div class="stat-card"><div class="numero" id="statFeedbacks">0</div><div class="rotulo">Feedbacks</div></div>
-                <div class="stat-card"><div class="numero" id="statBanidos">0</div><div class="rotulo">Usuários Banidos</div></div>
+        <div class="admin-body">
+            <div class="admin-sidebar" id="adminSidebar">
+                <div class="s-item ativo" data-tab="dashboard" onclick="mudarTab(this)">📊 Dashboard</div>
+                <div class="s-item" data-tab="maquinas" onclick="mudarTab(this)">🖥️ Restrição de Máquinas</div>
+                <div class="s-item" data-tab="codigo" onclick="mudarTab(this)">📝 Editor de Código</div>
+                <div class="s-item" data-tab="contas" onclick="mudarTab(this)">👥 Contas Admin</div>
+                <div class="s-item" data-tab="keys" onclick="mudarTab(this)">🔑 Keys Premium</div>
+                <div class="s-item" data-tab="config" onclick="mudarTab(this)">⚙️ Configurações</div>
             </div>
+            <div class="admin-content">
+                <div id="adminAlert" class="alert"></div>
 
-            <div class="tabs">
-                <div class="tab ativo" data-tab="votos" onclick="mudarTab(this)">🗳️ Votos</div>
-                <div class="tab" data-tab="feedbacks" onclick="mudarTab(this)">💡 Feedbacks</div>
-                <div class="tab" data-tab="banidos" onclick="mudarTab(this)">🚫 Lista Negra</div>
-                <div class="tab" data-tab="editar" onclick="mudarTab(this)">✏️ Editar Site</div>
-                <div class="tab" data-tab="keys" onclick="mudarTab(this)">🔑 Gerenciar Keys</div>
-            </div>
-
-            <div class="tab-content ativo" id="tabVotos">
-                <div class="card"><h3>🗳️ Registro de Votos</h3><div id="votosLista"><div class="vazio">Nenhum voto registrado.</div></div></div>
-            </div>
-
-            <div class="tab-content" id="tabFeedbacks">
-                <div class="card"><h3>💡 Feedbacks Recebidos</h3><div id="feedbacksLista"><div class="vazio">Nenhum feedback ainda.</div></div></div>
-            </div>
-
-            <div class="tab-content" id="tabBanidos">
-                <div class="card">
-                    <h3>🚫 Usuários na Lista Negra</h3>
-                    <div style="display:flex;gap:10px;margin-bottom:15px;">
-                        <input type="text" id="nomeBanir" placeholder="Nome do usuário" style="flex:1;">
-                        <button class="btn" onclick="banirUsuario()">Banir</button>
+                <!-- DASHBOARD -->
+                <div class="tab-content ativo" id="tabDashboard">
+                    <h2>📊 <span>Dashboard</span></h2>
+                    <div class="stats-grid">
+                        <div class="stat-card"><div class="numero" id="statMaquinas">0</div><div class="rotulo">Máquinas Registradas</div></div>
+                        <div class="stat-card"><div class="numero" id="statBloqueadas">0</div><div class="rotulo">Máquinas Bloqueadas</div></div>
+                        <div class="stat-card"><div class="numero" id="statAdmins">0</div><div class="rotulo">Contas Admin</div></div>
+                        <div class="stat-card"><div class="numero" id="statKeys">0</div><div class="rotulo">Keys Premium</div></div>
                     </div>
-                    <div id="banidosLista"><div class="vazio">Nenhum usuário banido.</div></div>
-                </div>
-            </div>
-
-            <div class="tab-content" id="tabEditar">
-                <div class="card">
-                    <h3>✏️ Editar Hero do Site</h3>
-                    <input type="text" id="editTitulo" placeholder="Título do hero">
-                    <textarea id="editDescricao" placeholder="Descrição do hero" style="min-height:80px;"></textarea>
-                    <button class="btn" onclick="salvarHero()">Salvar Hero</button>
-                    <span id="heroStatus" style="color:#6aff8a;margin-left:10px;font-size:13px;"></span>
-                </div>
-                <div class="card">
-                    <h3>🏷️ Editar Nome da Marca</h3>
-                    <input type="text" id="editMarca" placeholder="Nome da marca (ex: Quomion OS)">
-                    <button class="btn" onclick="salvarMarca()">Salvar Marca</button>
-                    <span id="marcaStatus" style="color:#6aff8a;margin-left:10px;font-size:13px;"></span>
-                </div>
-                <div class="card">
-                    <h3>🔑 Configurar Login Google</h3>
-                    <p style="color:#888;font-size:13px;margin-bottom:10px;">Cole seu Google Client ID para ativar o botão "Login com Google".</p>
-                    <input type="text" id="googleClientId" placeholder="Google Client ID">
-                    <button class="btn" onclick="salvarGoogleClientId()">Salvar</button>
-                    <span id="googleStatus" style="color:#6aff8a;margin-left:10px;font-size:13px;"></span>
-                    <p style="color:#555;font-size:12px;margin-top:8px;">Crie em <a href="https://console.cloud.google.com/apis/credentials" target="_blank" style="color:#6a6aff;">console.cloud.google.com</a></p>
-                </div>
-                <div class="card">
-                    <h3>🎨 Cores do Tema</h3>
-                    <div style="display:flex;gap:15px;flex-wrap:wrap;">
-                        <div><label style="color:#888;font-size:13px;">Cor primária</label><input type="color" id="corPrimaria" value="#6a6aff"></div>
-                        <div><label style="color:#888;font-size:13px;">Cor secundária</label><input type="color" id="corSecundaria" value="#3a3aff"></div>
+                    <div class="card">
+                        <h3>🖥️ Últimas Máquinas Acessadas</h3>
+                        <div id="ultimasMaquinas"><div class="vazio">Nenhuma máquina registrada.</div></div>
                     </div>
-                    <button class="btn" onclick="salvarCores()" style="margin-top:12px;">Aplicar Cores</button>
-                    <span id="corStatus" style="color:#6aff8a;margin-left:10px;font-size:13px;"></span>
                 </div>
-            </div>
 
-            <div class="tab-content" id="tabKeys">
-                <div class="card">
-                    <h3>🔑 Gerenciar Keys Premium</h3>
-                    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px;">
-                        <input type="text" id="keyNome" placeholder="Nome da key" style="flex:1;min-width:120px;">
-                        <input type="number" id="keyPreco" placeholder="Preço (R$)" style="width:120px;">
-                        <button class="btn btn-success" onclick="adicionarKey()">Adicionar</button>
+                <!-- RESTRIÇÃO DE MÁQUINAS -->
+                <div class="tab-content" id="tabMaquinas">
+                    <h2>🖥️ <span>Restrição de Máquinas</span></h2>
+                    <p style="color:#888;margin-bottom:20px;font-size:14px;">Gerencie quais máquinas podem acessar o site. Máquinas bloqueadas não conseguem visualizar o conteúdo.</p>
+
+                    <div class="card">
+                        <h3>➕ Adicionar Máquina à Lista Negra</h3>
+                        <div class="form-row">
+                            <div>
+                                <label>Identificador da Máquina</label>
+                                <input type="text" id="machineIdent" placeholder="Ex: fingerprint ou IP">
+                            </div>
+                            <div>
+                                <label>Motivo do Bloqueio</label>
+                                <input type="text" id="machineMotivo" placeholder="Motivo">
+                            </div>
+                            <div style="display:flex;align-items:flex-end;">
+                                <button class="btn btn-danger" onclick="bloquearMaquina()">🔨 Bloquear</button>
+                            </div>
+                        </div>
                     </div>
-                    <div id="keysLista"><div class="vazio">Nenhuma key cadastrada.</div></div>
+
+                    <div class="card">
+                        <h3>🔒 Sua Máquina Atual</h3>
+                        <div style="background:#0e0e1a;padding:15px;border-radius:8px;margin-bottom:15px;">
+                            <div style="color:#aaa;font-size:13px;" id="minhaMaquinaInfo">Carregando...</div>
+                        </div>
+                        <button class="btn btn-danger" onclick="bloquearPropriaMaquina()">🚫 Bloquear minha máquina</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>📋 Máquinas Bloqueadas</h3>
+                        <div id="maquinasBloqueadas"><div class="vazio">Nenhuma máquina bloqueada.</div></div>
+                    </div>
+
+                    <div class="card">
+                        <h3>📋 Máquinas Permitidas</h3>
+                        <div id="maquinasPermitidas"><div class="vazio">Nenhuma máquina registrada.</div></div>
+                    </div>
+                </div>
+
+                <!-- EDITOR DE CÓDIGO -->
+                <div class="tab-content" id="tabCodigo">
+                    <h2>📝 <span>Editor de Código</span></h2>
+                    <p style="color:#888;margin-bottom:20px;font-size:14px;">Edite o código HTML completo do site. As alterações são salvas no navegador e aplicadas instantaneamente.</p>
+                    <div class="card">
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:10px;">
+                            <h3 style="margin:0;">📄 Código HTML do Site</h3>
+                            <div>
+                                <button class="btn btn-success" onclick="salvarCodigoSite()">💾 Salvar Código</button>
+                                <button class="btn btn-warning" onclick="restaurarCodigoOriginal()">↩️ Restaurar Original</button>
+                            </div>
+                        </div>
+                        <textarea id="editorCodigo" style="min-height:500px;font-size:13px;line-height:1.5;"></textarea>
+                        <div style="color:#888;font-size:12px;margin-top:8px;">
+                            ⚠️ Edite com cuidado. Erros no HTML podem quebrar o site.
+                            <span id="codigoStatus" style="color:#6aff8a;margin-left:10px;"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONTAS ADMIN -->
+                <div class="tab-content" id="tabContas">
+                    <h2>👥 <span>Contas de Administrador</span></h2>
+                    <p style="color:#888;margin-bottom:20px;font-size:14px;">Gerencie as contas que podem acessar o painel administrativo.</p>
+
+                    <div class="card">
+                        <h3>➕ Criar Nova Conta Admin</h3>
+                        <div class="form-row">
+                            <div>
+                                <label>Nome</label>
+                                <input type="text" id="novoAdminNome" placeholder="Nome do admin">
+                            </div>
+                            <div>
+                                <label>E-mail</label>
+                                <input type="email" id="novoAdminEmail" placeholder="email@exemplo.com">
+                            </div>
+                            <div>
+                                <label>Senha</label>
+                                <input type="password" id="novoAdminSenha" placeholder="Senha segura">
+                            </div>
+                            <div style="display:flex;align-items:flex-end;">
+                                <button class="btn btn-success" onclick="criarContaAdmin()">✅ Criar Conta</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>📋 Contas Administrativas</h3>
+                        <div id="listaContas"><div class="vazio">Nenhuma conta cadastrada.</div></div>
+                    </div>
+                </div>
+
+                <!-- KEYS PREMIUM -->
+                <div class="tab-content" id="tabKeys">
+                    <h2>🔑 <span>Keys Premium</span></h2>
+                    <p style="color:#888;margin-bottom:20px;font-size:14px;">Gerencie as keys premium disponíveis para venda no site.</p>
+                    <div class="card">
+                        <h3>➕ Adicionar Key</h3>
+                        <div class="form-row">
+                            <div>
+                                <label>Nome da Key</label>
+                                <input type="text" id="keyNome" placeholder="Ex: Key Starter">
+                            </div>
+                            <div>
+                                <label>Preço (R$)</label>
+                                <input type="number" id="keyPreco" placeholder="10">
+                            </div>
+                            <div style="display:flex;align-items:flex-end;">
+                                <button class="btn btn-success" onclick="adicionarKey()">➕ Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>📋 Keys Cadastradas</h3>
+                        <div id="keysLista"><div class="vazio">Nenhuma key cadastrada.</div></div>
+                    </div>
+                </div>
+
+                <!-- CONFIGURAÇÕES -->
+                <div class="tab-content" id="tabConfig">
+                    <h2>⚙️ <span>Configurações do Site</span></h2>
+                    <div class="card">
+                        <h3>🎨 Cores do Tema</h3>
+                        <div class="form-row">
+                            <div>
+                                <label>Cor Primária</label>
+                                <input type="color" id="corPrimaria" value="#6a6aff" style="height:50px;padding:2px;">
+                            </div>
+                            <div>
+                                <label>Cor Secundária</label>
+                                <input type="color" id="corSecundaria" value="#3a3aff" style="height:50px;padding:2px;">
+                            </div>
+                        </div>
+                        <button class="btn" onclick="salvarCores()">🎨 Aplicar Cores</button>
+                        <span id="corStatus" style="color:#6aff8a;margin-left:10px;font-size:13px;"></span>
+                    </div>
+                    <div class="card">
+                        <h3>📝 Editar Hero do Site</h3>
+                        <label>Título</label>
+                        <input type="text" id="editTitulo" placeholder="Título do hero">
+                        <label>Descrição</label>
+                        <textarea id="editDescricao" style="min-height:80px;" placeholder="Descrição do hero"></textarea>
+                        <button class="btn" onclick="salvarHero()">💾 Salvar Hero</button>
+                        <span id="heroStatus" style="color:#6aff8a;margin-left:10px;font-size:13px;"></span>
+                    </div>
+                    <div class="card">
+                        <h3>💾 Gerenciar Dados</h3>
+                        <button class="btn btn-danger" onclick="resetarTudo()">⚠️ Resetar Todos os Dados</button>
+                        <span style="color:#888;font-size:12px;margin-left:10px;">Remove todas as configurações, contas e bloqueios.</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script>
-        // ─── CONSTANTES ───
-        const SENHA = '#</3V)f\\}AwL-6s<_A&E#aI%2pi345b1a`I|(ueh]m*H"w48`';
-        const ADMINS = ['seallythecodercoding@gmail.com', 'noqpor175@gmail.com'];
+        // ═══════════════════════════════════════════════════════════════
+        // CONFIGURAÇÃO
+        // ═══════════════════════════════════════════════════════════════
+        const ADMIN_PADRAO = {
+            email: 'quomionmania@gmail.com',
+            senha: 'Br0t3F0r2e',
+            nome: 'Admin Master'
+        };
 
-        // ─── NAVEGAÇÃO ───
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.querySelector('nav').classList.remove('show');
-            });
-        });
+        // ═══════════════════════════════════════════════════════════════
+        // SISTEMA DE FINGERPRINT / IDENTIFICAÇÃO DE MÁQUINA
+        // ═══════════════════════════════════════════════════════════════
+        function gerarFingerprint() {
+            let fp = localStorage.getItem('quomionMachineFP');
+            if (!fp) {
+                const nav = navigator;
+                const raw = [
+                    nav.userAgent,
+                    nav.language,
+                    nav.platform,
+                    screen.width,
+                    screen.height,
+                    screen.colorDepth,
+                    new Date().getTimezoneOffset(),
+                    nav.hardwareConcurrency || '',
+                    nav.deviceMemory || ''
+                ].join('|||');
+                let hash = 0;
+                for (let i = 0; i < raw.length; i++) {
+                    const c = raw.charCodeAt(i);
+                    hash = ((hash << 5) - hash) + c;
+                    hash = hash & hash;
+                }
+                fp = 'FP_' + Math.abs(hash).toString(16).toUpperCase();
+                localStorage.setItem('quomionMachineFP', fp);
+            }
+            return fp;
+        }
 
-        // ─── MODAL ADMIN ───
+        function getMaquinaInfo() {
+            return {
+                fingerprint: gerarFingerprint(),
+                userAgent: navigator.userAgent,
+                platform: navigator.platform,
+                language: navigator.language,
+                screen: screen.width + 'x' + screen.height,
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'N/A'
+            };
+        }
+
+        function getMaquinas() {
+            return JSON.parse(localStorage.getItem('quomionMaquinas')) || {};
+        }
+
+        function salvarMaquinas(data) {
+            localStorage.setItem('quomionMaquinas', JSON.stringify(data));
+        }
+
+        function registrarMaquinaAtual() {
+            const info = getMaquinaInfo();
+            const maquinas = getMaquinas();
+            const fp = info.fingerprint;
+            if (!maquinas[fp]) {
+                maquinas[fp] = {
+                    fingerprint: fp,
+                    userAgent: info.userAgent,
+                    platform: info.platform,
+                    language: info.language,
+                    screen: info.screen,
+                    timezone: info.timezone,
+                    dataRegistro: new Date().toISOString(),
+                    ultimoAcesso: new Date().toISOString(),
+                    bloqueado: false,
+                    motivo: ''
+                };
+            } else {
+                maquinas[fp].ultimoAcesso = new Date().toISOString();
+                maquinas[fp].userAgent = info.userAgent;
+                maquinas[fp].platform = info.platform;
+            }
+            salvarMaquinas(maquinas);
+            return maquinas[fp];
+        }
+
+        function verificarBloqueio() {
+            const fp = gerarFingerprint();
+            const maquinas = getMaquinas();
+            if (maquinas[fp] && maquinas[fp].bloqueado) {
+                document.getElementById('blockedPage').classList.add('show');
+                document.getElementById('publicSite').style.display = 'none';
+                return true;
+            }
+            return false;
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // SISTEMA DE CONTAS ADMIN
+        // ═══════════════════════════════════════════════════════════════
+        function getAdmins() {
+            try {
+                let admins = JSON.parse(localStorage.getItem('quomionAdmins'));
+                if (!admins || !Array.isArray(admins) || admins.length === 0) {
+                    admins = [{
+                        nome: ADMIN_PADRAO.nome,
+                        email: ADMIN_PADRAO.email,
+                        senha: ADMIN_PADRAO.senha,
+                        tipo: 'master',
+                        criadoEm: new Date().toISOString()
+                    }];
+                    localStorage.setItem('quomionAdmins', JSON.stringify(admins));
+                }
+                return admins;
+            } catch(e) {
+                const admins = [{
+                    nome: ADMIN_PADRAO.nome,
+                    email: ADMIN_PADRAO.email,
+                    senha: ADMIN_PADRAO.senha,
+                    tipo: 'master',
+                    criadoEm: new Date().toISOString()
+                }];
+                localStorage.setItem('quomionAdmins', JSON.stringify(admins));
+                return admins;
+            }
+        }
+
+        function salvarAdmins(admins) {
+            localStorage.setItem('quomionAdmins', JSON.stringify(admins));
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // LOGIN
+        // ═══════════════════════════════════════════════════════════════
         function abrirModalAdmin() {
             document.getElementById('modalAdmin').classList.add('show');
-            renderGoogleBtn();
+            document.getElementById('erroLogin').style.display = 'none';
+            document.getElementById('loginEmail').value = '';
+            document.getElementById('loginSenha').value = '';
+            document.getElementById('loginEmail').focus();
         }
+
         function fecharModalAdmin() {
             document.getElementById('modalAdmin').classList.remove('show');
-            document.getElementById('erroLogin').style.display = 'none';
         }
 
         function entrarAdmin() {
-            const s = document.getElementById('senhaInput').value.trim().toLowerCase();
-            if (ADMINS.includes(s)) {
+            const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+            const senha = document.getElementById('loginSenha').value;
+            const admins = getAdmins();
+
+            if (email === ADMIN_PADRAO.email.toLowerCase() && senha === ADMIN_PADRAO.senha) {
                 fecharModalAdmin();
-                mostrarAdmin();
-                localStorage.setItem('quobileAdminLogado', s);
-                carregarDados();
+                localStorage.setItem('quomionAdminLogado', JSON.stringify({
+                    email: ADMIN_PADRAO.email,
+                    nome: ADMIN_PADRAO.nome,
+                    tipo: 'master'
+                }));
+                abrirPainel();
                 return;
             }
-            if (s === SENHA) {
+
+            const admin = admins.find(a => a.email.toLowerCase() === email && a.senha === senha);
+            if (admin) {
                 fecharModalAdmin();
-                mostrarAdmin();
-                localStorage.setItem('quobileAdminLogado', 'senha');
-                carregarDados();
+                localStorage.setItem('quomionAdminLogado', JSON.stringify({
+                    email: admin.email,
+                    nome: admin.nome,
+                    tipo: admin.tipo || 'admin'
+                }));
+                abrirPainel();
             } else {
                 document.getElementById('erroLogin').style.display = 'block';
+                document.getElementById('erroLogin').textContent = 'E-mail ou senha incorretos!';
             }
         }
 
         function sairAdmin() {
-            localStorage.removeItem('quobileAdminLogado');
+            localStorage.removeItem('quomionAdminLogado');
             document.getElementById('adminPanel').classList.remove('show');
             document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('publicSite').style.display = 'block';
             window.scrollTo({ top: 0 });
         }
 
@@ -925,33 +940,322 @@
             window.open('https://quomionmania.netlify.app/', '_blank');
         }
 
-        function mostrarAdmin() {
+        function abrirPainel() {
             const panel = document.getElementById('adminPanel');
             panel.style.display = 'block';
             panel.classList.add('show');
-            document.querySelector('header').style.display = 'none';
-            document.querySelectorAll('section').forEach(s => s.style.display = 'none');
-            document.querySelector('footer').style.display = 'none';
-            panel.scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('publicSite').style.display = 'none';
+            const admin = JSON.parse(localStorage.getItem('quomionAdminLogado'));
+            document.getElementById('adminUserInfo').textContent = '👤 ' + (admin ? admin.nome : 'Admin');
+            carregarAdmin();
         }
 
-        // ─── ABAS ───
+        // ═══════════════════════════════════════════════════════════════
+        // NAVEGAÇÃO DO PAINEL
+        // ═══════════════════════════════════════════════════════════════
         function mudarTab(el) {
-            document.querySelectorAll('#adminPanel .tab').forEach(t => t.classList.remove('ativo'));
-            document.querySelectorAll('#adminPanel .tab-content').forEach(t => t.classList.remove('ativo'));
+            document.querySelectorAll('#adminSidebar .s-item').forEach(t => t.classList.remove('ativo'));
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('ativo'));
             el.classList.add('ativo');
-            document.getElementById('tab' + el.dataset.tab.charAt(0).toUpperCase() + el.dataset.tab.slice(1)).classList.add('ativo');
+            const tabId = 'tab' + el.dataset.tab.charAt(0).toUpperCase() + el.dataset.tab.slice(1);
+            document.getElementById(tabId).classList.add('ativo');
         }
 
-        // ─── DADOS ───
-        function getVotos() {
-            return JSON.parse(localStorage.getItem('quobileVotos')) || { sim: 0, nao: 0, feedbacks: [] };
+        // ═══════════════════════════════════════════════════════════════
+        // DASHBOARD
+        // ═══════════════════════════════════════════════════════════════
+        function atualizarDashboard() {
+            const maquinas = getMaquinas();
+            const admins = getAdmins();
+            const keys = getKeysData();
+            const lista = Object.values(maquinas);
+
+            document.getElementById('statMaquinas').textContent = lista.length;
+            document.getElementById('statBloqueadas').textContent = lista.filter(m => m.bloqueado).length;
+            document.getElementById('statAdmins').textContent = admins.length;
+            document.getElementById('statKeys').textContent = keys.length;
+
+            const recentes = lista.sort((a, b) => new Date(b.ultimoAcesso) - new Date(a.ultimoAcesso)).slice(0, 5);
+            const el = document.getElementById('ultimasMaquinas');
+            if (recentes.length === 0) {
+                el.innerHTML = '<div class="vazio">Nenhuma máquina registrada.</div>';
+            } else {
+                let html = '<table class="tabela"><tr><th>Fingerprint</th><th>Plataforma</th><th>Status</th><th>Último Acesso</th></tr>';
+                recentes.forEach(m => {
+                    html += `<tr>
+                        <td style="font-size:12px;font-family:monospace;">${m.fingerprint}</td>
+                        <td>${m.platform || 'N/A'}</td>
+                        <td><span class="badge-status ${m.bloqueado ? 'badge-blocked' : 'badge-allowed'}">${m.bloqueado ? '🚫 Bloqueado' : '✅ Permitido'}</span></td>
+                        <td style="font-size:12px;">${new Date(m.ultimoAcesso).toLocaleString('pt-BR')}</td>
+                    </tr>`;
+                });
+                html += '</table>';
+                el.innerHTML = html;
+            }
         }
-        function getBanidos() {
-            return JSON.parse(localStorage.getItem('quobileBanidos')) || [];
+
+        // ═══════════════════════════════════════════════════════════════
+        // RESTRIÇÃO DE MÁQUINAS
+        // ═══════════════════════════════════════════════════════════════
+        function exibirMinhaMaquina() {
+            const info = getMaquinaInfo();
+            const maquinas = getMaquinas();
+            const m = maquinas[info.fingerprint];
+            document.getElementById('minhaMaquinaInfo').innerHTML = `
+                <strong>Fingerprint:</strong> <code style="color:#6a6aff;">${info.fingerprint}</code><br>
+                <strong>Plataforma:</strong> ${info.platform}<br>
+                <strong>Navegador:</strong> ${info.userAgent.substring(0, 80)}...<br>
+                <strong>Tela:</strong> ${info.screen}<br>
+                <strong>Idioma:</strong> ${info.language}<br>
+                <strong>Fuso:</strong> ${info.timezone}<br>
+                <strong>Status:</strong> ${m && m.bloqueado ? '<span style="color:#ff4a4a;">🚫 Bloqueada</span>' : '<span style="color:#6aff8a;">✅ Permitida</span>'}
+            `;
         }
-        function getKeys() {
-            return JSON.parse(localStorage.getItem('quobileKeys')) || [
+
+        function bloquearPropriaMaquina() {
+            if (!confirm('Tem certeza que deseja BLOQUEAR sua própria máquina? Você não poderá mais acessar o site enquanto estiver logado.')) return;
+            const fp = gerarFingerprint();
+            const maquinas = getMaquinas();
+            if (!maquinas[fp]) {
+                registrarMaquinaAtual();
+            }
+            const maquinas2 = getMaquinas();
+            maquinas2[fp].bloqueado = true;
+            maquinas2[fp].motivo = 'Auto-bloqueio pelo admin';
+            salvarMaquinas(maquinas2);
+            mostrarAlerta('Sua máquina foi bloqueada com sucesso!', 'success');
+            atualizarListasMaquinas();
+            exibirMinhaMaquina();
+            atualizarDashboard();
+        }
+
+        function bloquearMaquina() {
+            const ident = document.getElementById('machineIdent').value.trim();
+            const motivo = document.getElementById('machineMotivo').value.trim() || 'Sem motivo';
+            if (!ident) { mostrarAlerta('Digite um identificador de máquina.', 'danger'); return; }
+
+            const maquinas = getMaquinas();
+            let encontrou = false;
+            Object.keys(maquinas).forEach(fp => {
+                if (fp.includes(ident) || (maquinas[fp].fingerprint && maquinas[fp].fingerprint.includes(ident))) {
+                    maquinas[fp].bloqueado = true;
+                    maquinas[fp].motivo = motivo;
+                    encontrou = true;
+                }
+            });
+
+            if (!encontrou) {
+                maquinas[ident] = {
+                    fingerprint: ident,
+                    userAgent: 'Bloqueio manual',
+                    platform: 'Desconhecida',
+                    language: 'N/A',
+                    screen: 'N/A',
+                    timezone: 'N/A',
+                    dataRegistro: new Date().toISOString(),
+                    ultimoAcesso: new Date().toISOString(),
+                    bloqueado: true,
+                    motivo: motivo
+                };
+            }
+            salvarMaquinas(maquinas);
+            document.getElementById('machineIdent').value = '';
+            document.getElementById('machineMotivo').value = '';
+            mostrarAlerta('Máquina bloqueada com sucesso!', 'success');
+            atualizarListasMaquinas();
+            atualizarDashboard();
+        }
+
+        function desbloquearMaquina(fp) {
+            const maquinas = getMaquinas();
+            if (maquinas[fp]) {
+                maquinas[fp].bloqueado = false;
+                maquinas[fp].motivo = '';
+                salvarMaquinas(maquinas);
+                mostrarAlerta('Máquina desbloqueada!', 'success');
+                atualizarListasMaquinas();
+                atualizarDashboard();
+                exibirMinhaMaquina();
+            }
+        }
+
+        function atualizarListasMaquinas() {
+            const maquinas = getMaquinas();
+            const lista = Object.values(maquinas);
+            const bloqueadas = lista.filter(m => m.bloqueado);
+            const permitidas = lista.filter(m => !m.bloqueado);
+
+            // Lista bloqueadas
+            const elBloq = document.getElementById('maquinasBloqueadas');
+            if (bloqueadas.length === 0) {
+                elBloq.innerHTML = '<div class="vazio">Nenhuma máquina bloqueada.</div>';
+            } else {
+                let html = '<table class="tabela"><tr><th>Fingerprint</th><th>Plataforma</th><th>Motivo</th><th>Ação</th></tr>';
+                bloqueadas.forEach(m => {
+                    html += `<tr>
+                        <td style="font-size:12px;font-family:monospace;">${m.fingerprint}</td>
+                        <td>${m.platform || 'N/A'}</td>
+                        <td style="color:#ff6a6a;">${m.motivo || '—'}</td>
+                        <td><button class="btn-sm btn-success" onclick="desbloquearMaquina('${m.fingerprint}')">✅ Desbloquear</button></td>
+                    </tr>`;
+                });
+                html += '</table>';
+                elBloq.innerHTML = html;
+            }
+
+            // Lista permitidas
+            const elPerm = document.getElementById('maquinasPermitidas');
+            if (permitidas.length === 0) {
+                elPerm.innerHTML = '<div class="vazio">Nenhuma máquina registrada.</div>';
+            } else {
+                let html = '<table class="tabela"><tr><th>Fingerprint</th><th>Plataforma</th><th>Último Acesso</th><th>Ação</th></tr>';
+                permitidas.forEach(m => {
+                    html += `<tr>
+                        <td style="font-size:12px;font-family:monospace;">${m.fingerprint}</td>
+                        <td>${m.platform || 'N/A'}</td>
+                        <td style="font-size:12px;">${new Date(m.ultimoAcesso).toLocaleString('pt-BR')}</td>
+                        <td><button class="btn-sm btn-danger" onclick="bloquearPorFP('${m.fingerprint}')">🚫 Bloquear</button></td>
+                    </tr>`;
+                });
+                html += '</table>';
+                elPerm.innerHTML = html;
+            }
+        }
+
+        function bloquearPorFP(fp) {
+            const motivo = prompt('Motivo do bloqueio para esta máquina:');
+            if (motivo === null) return;
+            const maquinas = getMaquinas();
+            if (maquinas[fp]) {
+                maquinas[fp].bloqueado = true;
+                maquinas[fp].motivo = motivo || 'Bloqueado pelo admin';
+                salvarMaquinas(maquinas);
+                mostrarAlerta('Máquina bloqueada!', 'success');
+                atualizarListasMaquinas();
+                atualizarDashboard();
+                exibirMinhaMaquina();
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // EDITOR DE CÓDIGO
+        // ═══════════════════════════════════════════════════════════════
+        function getCodigoSalvo() {
+            return localStorage.getItem('quomionCodigoSite') || '';
+        }
+
+        function carregarEditorCodigo() {
+            const codigo = getCodigoSalvo();
+            if (codigo) {
+                document.getElementById('editorCodigo').value = codigo;
+            } else {
+                document.getElementById('editorCodigo').value = obterHtmlOriginal();
+            }
+        }
+
+        function obterHtmlOriginal() {
+            return document.documentElement.outerHTML;
+        }
+
+        function salvarCodigoSite() {
+            const codigo = document.getElementById('editorCodigo').value;
+            if (!codigo.trim()) {
+                mostrarAlerta('Código vazio!', 'danger');
+                return;
+            }
+            localStorage.setItem('quomionCodigoSite', codigo);
+            document.getElementById('codigoStatus').textContent = '✅ Código salvo com sucesso!';
+            mostrarAlerta('Código do site salvo com sucesso!', 'success');
+            setTimeout(() => document.getElementById('codigoStatus').textContent = '', 3000);
+        }
+
+        function restaurarCodigoOriginal() {
+            if (!confirm('Tem certeza? Isso irá restaurar o código original do site e perder todas as alterações.')) return;
+            localStorage.removeItem('quomionCodigoSite');
+            document.getElementById('editorCodigo').value = obterHtmlOriginal();
+            document.getElementById('codigoStatus').textContent = '✅ Código original restaurado!';
+            mostrarAlerta('Código original restaurado! Recarregue a página para ver as alterações.', 'info');
+            setTimeout(() => document.getElementById('codigoStatus').textContent = '', 3000);
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // CONTAS ADMIN
+        // ═══════════════════════════════════════════════════════════════
+        function criarContaAdmin() {
+            const nome = document.getElementById('novoAdminNome').value.trim();
+            const email = document.getElementById('novoAdminEmail').value.trim().toLowerCase();
+            const senha = document.getElementById('novoAdminSenha').value;
+            if (!nome || !email || !senha) {
+                mostrarAlerta('Preencha todos os campos!', 'danger');
+                return;
+            }
+            if (!email.includes('@')) {
+                mostrarAlerta('E-mail inválido!', 'danger');
+                return;
+            }
+            if (senha.length < 6) {
+                mostrarAlerta('A senha deve ter pelo menos 6 caracteres!', 'danger');
+                return;
+            }
+            const admins = getAdmins();
+            if (admins.find(a => a.email === email)) {
+                mostrarAlerta('Já existe uma conta com este e-mail!', 'danger');
+                return;
+            }
+            admins.push({
+                nome, email, senha, tipo: 'admin',
+                criadoEm: new Date().toISOString()
+            });
+            salvarAdmins(admins);
+            document.getElementById('novoAdminNome').value = '';
+            document.getElementById('novoAdminEmail').value = '';
+            document.getElementById('novoAdminSenha').value = '';
+            mostrarAlerta('Conta admin criada com sucesso!', 'success');
+            atualizarListaContas();
+            atualizarDashboard();
+        }
+
+        function removerContaAdmin(email) {
+            if (email === ADMIN_PADRAO.email.toLowerCase()) {
+                mostrarAlerta('Não é possível remover a conta master!', 'danger');
+                return;
+            }
+            if (!confirm(`Remover conta ${email}?`)) return;
+            let admins = getAdmins();
+            admins = admins.filter(a => a.email.toLowerCase() !== email);
+            salvarAdmins(admins);
+            mostrarAlerta('Conta removida!', 'success');
+            atualizarListaContas();
+            atualizarDashboard();
+        }
+
+        function atualizarListaContas() {
+            const admins = getAdmins();
+            const el = document.getElementById('listaContas');
+            if (admins.length === 0) {
+                el.innerHTML = '<div class="vazio">Nenhuma conta cadastrada.</div>';
+                return;
+            }
+            let html = '<table class="tabela"><tr><th>Nome</th><th>E-mail</th><th>Tipo</th><th>Criada Em</th><th>Ação</th></tr>';
+            admins.forEach(a => {
+                const isMaster = a.email.toLowerCase() === ADMIN_PADRAO.email.toLowerCase();
+                html += `<tr>
+                    <td>${a.nome}</td>
+                    <td>${a.email}</td>
+                    <td><span class="badge-status ${isMaster ? 'badge-allowed' : 'badge-pending'}">${isMaster ? '⭐ Master' : '👤 Admin'}</span></td>
+                    <td style="font-size:12px;">${new Date(a.criadoEm).toLocaleString('pt-BR')}</td>
+                    <td>${isMaster ? '<span style="color:#555;">—</span>' : `<button class="btn-sm btn-danger" onclick="removerContaAdmin('${a.email}')">🗑️ Remover</button>`}</td>
+                </tr>`;
+            });
+            html += '</table>';
+            el.innerHTML = html;
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // KEYS PREMIUM
+        // ═══════════════════════════════════════════════════════════════
+        function getKeysData() {
+            return JSON.parse(localStorage.getItem('quomionKeys')) || [
                 { nome: 'Key Starter', preco: 10 },
                 { nome: 'Key Performance', preco: 30 },
                 { nome: 'Key Security', preco: 50 },
@@ -960,76 +1264,52 @@
                 { nome: 'Key Enterprise', preco: 200 }
             ];
         }
-        function getSiteConfig() {
-            return JSON.parse(localStorage.getItem('quobileSiteConfig')) || {
-                titulo: 'O Futuro é Quomion',
-                descricao: 'Um sistema operacional leve, seguro e moderno, projetado para oferecer o máximo de desempenho tanto no seu PC quanto no seu celular.',
-                marca: 'QuomionOS',
-                corPrimaria: '#6a6aff',
-                corSecundaria: '#3a3aff'
-            };
-        }
 
-        function carregarDados() {
-            const votos = getVotos();
-            const banidos = getBanidos();
-            const keys = getKeys();
-            const config = getSiteConfig();
-
-            document.getElementById('statVotos').textContent = votos.sim + votos.nao;
-            document.getElementById('statSim').textContent = votos.sim;
-            document.getElementById('statNao').textContent = votos.nao;
-            document.getElementById('statFeedbacks').textContent = votos.feedbacks.length;
-            document.getElementById('statBanidos').textContent = banidos.length;
-
-            const vLista = document.getElementById('votosLista');
-            const total = votos.sim + votos.nao;
-            if (total === 0) {
-                vLista.innerHTML = '<div class="vazio">Nenhum voto registrado.</div>';
-            } else {
-                vLista.innerHTML = `
-                    <table class="tabela">
-                        <tr><th>Opção</th><th>Votos</th><th>Porcentagem</th></tr>
-                        <tr><td>✅ Sim</td><td>${votos.sim}</td><td>${total ? (votos.sim/total*100).toFixed(1) : 0}%</td></tr>
-                        <tr><td>❌ Não</td><td>${votos.nao}</td><td>${total ? (votos.nao/total*100).toFixed(1) : 0}%</td></tr>
-                    </table>
-                    <div style="margin-top:10px;color:#888;font-size:13px;">Chave: <code>quobileVotos</code></div>
-                `;
-            }
-
-            const fLista = document.getElementById('feedbacksLista');
-            if (votos.feedbacks.length === 0) {
-                fLista.innerHTML = '<div class="vazio">Nenhum feedback ainda.</div>';
-            } else {
-                let html = '';
-                votos.feedbacks.forEach((f, i) => {
-                    html += `<div style="padding:10px 0;border-bottom:1px solid #1f1f35;">
-                        <strong style="color:#6a6aff;">#${i+1}</strong>
-                        <span style="color:#ccc;">${f}</span>
-                        <button class="btn-sm btn-danger" onclick="removerFeedback(${i})" style="float:right;">Excluir</button>
-                    </div>`;
-                });
-                fLista.innerHTML = html;
-            }
-
-            atualizarListaBanidos();
-            atualizarListaKeysAdmin();
-
-            document.getElementById('editTitulo').value = config.titulo;
-            document.getElementById('editDescricao').value = config.descricao;
-            document.getElementById('editMarca').value = config.marca;
-            document.getElementById('corPrimaria').value = config.corPrimaria;
-            document.getElementById('corSecundaria').value = config.corSecundaria;
-            document.getElementById('googleClientId').value = getGoogleClientId();
+        function adicionarKey() {
+            const nome = document.getElementById('keyNome').value.trim();
+            const preco = parseInt(document.getElementById('keyPreco').value);
+            if (!nome || !preco) { mostrarAlerta('Preencha nome e preço!', 'danger'); return; }
+            const keys = getKeysData();
+            keys.push({ nome, preco });
+            localStorage.setItem('quomionKeys', JSON.stringify(keys));
+            document.getElementById('keyNome').value = '';
+            document.getElementById('keyPreco').value = '';
+            atualizarListaKeys();
             renderizarKeysSite();
+            atualizarDashboard();
+            mostrarAlerta('Key adicionada!', 'success');
         }
 
-        // ─── KEYS NO SITE ───
+        function removerKey(index) {
+            const keys = getKeysData();
+            keys.splice(index, 1);
+            localStorage.setItem('quomionKeys', JSON.stringify(keys));
+            atualizarListaKeys();
+            renderizarKeysSite();
+            atualizarDashboard();
+            mostrarAlerta('Key removida!', 'success');
+        }
+
+        function atualizarListaKeys() {
+            const keys = getKeysData();
+            const el = document.getElementById('keysLista');
+            if (keys.length === 0) {
+                el.innerHTML = '<div class="vazio">Nenhuma key cadastrada.</div>';
+                return;
+            }
+            let html = '<table class="tabela"><tr><th>Key</th><th>Preço</th><th>Ação</th></tr>';
+            keys.forEach((k, i) => {
+                html += `<tr><td>${k.nome}</td><td>R$ ${k.preco},00</td><td><button class="btn-sm btn-danger" onclick="removerKey(${i})">🗑️ Remover</button></td></tr>`;
+            });
+            html += '</table>';
+            el.innerHTML = html;
+        }
+
         function renderizarKeysSite() {
-            const keys = getKeys();
+            const keys = getKeysData();
             const grid = document.getElementById('keysGrid');
             if (keys.length === 0) {
-                grid.innerHTML = '<p style="text-align:center;color:#555;">Nenhuma key disponível no momento.</p>';
+                grid.innerHTML = '<p style="text-align:center;color:#555;">Nenhuma key disponível.</p>';
                 return;
             }
             grid.innerHTML = keys.map(k => `
@@ -1046,177 +1326,137 @@
         }
 
         function comprarKey(nome, preco) {
-            alert('💳 Apenas PIX como forma de pagamento.\n\nKey: ' + nome + '\nValor: R$ ' + preco + ',00\n\nChave PIX: contato@quomionos.com');
+            alert('💳 Apenas PIX como forma de pagamento.\n\nKey: ' + nome + '\nValor: R$ ' + preco + ',00\n\nChave PIX: melloonbehs@gmail.com');
         }
 
-        // ─── LISTA NEGRA ───
-        function banirUsuario() {
-            const nome = document.getElementById('nomeBanir').value.trim();
-            if (!nome) { alert('Digite um nome.'); return; }
-            const banidos = getBanidos();
-            if (banidos.includes(nome)) { alert('Usuário já está banido.'); return; }
-            banidos.push(nome);
-            localStorage.setItem('quobileBanidos', JSON.stringify(banidos));
-            document.getElementById('nomeBanir').value = '';
-            atualizarListaBanidos();
-            document.getElementById('statBanidos').textContent = banidos.length;
+        // ═══════════════════════════════════════════════════════════════
+        // CONFIGURAÇÕES
+        // ═══════════════════════════════════════════════════════════════
+        function getSiteConfig() {
+            return JSON.parse(localStorage.getItem('quomionSiteConfig')) || {
+                titulo: 'O Futuro é Quomion',
+                descricao: 'Um sistema operacional leve, seguro e moderno, projetado para oferecer o máximo de desempenho tanto no seu PC quanto no seu celular.',
+                corPrimaria: '#6a6aff',
+                corSecundaria: '#3a3aff'
+            };
         }
 
-        function desbanirUsuario(nome) {
-            let banidos = getBanidos();
-            banidos = banidos.filter(b => b !== nome);
-            localStorage.setItem('quobileBanidos', JSON.stringify(banidos));
-            atualizarListaBanidos();
-            document.getElementById('statBanidos').textContent = banidos.length;
-        }
-
-        function atualizarListaBanidos() {
-            const banidos = getBanidos();
-            const el = document.getElementById('banidosLista');
-            if (banidos.length === 0) {
-                el.innerHTML = '<div class="vazio">Nenhum usuário banido.</div>';
-                return;
-            }
-            let html = '<table class="tabela"><tr><th>Usuário</th><th>Status</th><th>Ação</th></tr>';
-            banidos.forEach(b => {
-                html += `<tr><td>${b}</td><td><span class="badge-ban banido">🚫 Banido</span></td><td><button class="btn-sm btn-success" onclick="desbanirUsuario('${b}')">Desbanir</button></td></tr>`;
-            });
-            html += '</table>';
-            el.innerHTML = html;
-        }
-
-        // ─── FEEDBACKS ───
-        function removerFeedback(index) {
-            const votos = getVotos();
-            votos.feedbacks.splice(index, 1);
-            localStorage.setItem('quobileVotos', JSON.stringify(votos));
-            carregarDados();
-        }
-
-        // ─── KEYS ADMIN ───
-        function adicionarKey() {
-            const nome = document.getElementById('keyNome').value.trim();
-            const preco = parseInt(document.getElementById('keyPreco').value);
-            if (!nome || !preco) { alert('Preencha nome e preço.'); return; }
-            const keys = getKeys();
-            keys.push({ nome, preco });
-            localStorage.setItem('quobileKeys', JSON.stringify(keys));
-            document.getElementById('keyNome').value = '';
-            document.getElementById('keyPreco').value = '';
-            atualizarListaKeysAdmin();
-            renderizarKeysSite();
-        }
-
-        function removerKey(index) {
-            const keys = getKeys();
-            keys.splice(index, 1);
-            localStorage.setItem('quobileKeys', JSON.stringify(keys));
-            atualizarListaKeysAdmin();
-            renderizarKeysSite();
-        }
-
-        function atualizarListaKeysAdmin() {
-            const keys = getKeys();
-            const el = document.getElementById('keysLista');
-            if (keys.length === 0) {
-                el.innerHTML = '<div class="vazio">Nenhuma key cadastrada.</div>';
-                return;
-            }
-            let html = '<table class="tabela"><tr><th>Key</th><th>Preço</th><th>Ação</th></tr>';
-            keys.forEach((k, i) => {
-                html += `<tr><td>${k.nome}</td><td>R$ ${k.preco},00</td><td><button class="btn-sm btn-danger" onclick="removerKey(${i})">Remover</button></td></tr>`;
-            });
-            html += '</table>';
-            el.innerHTML = html;
-        }
-
-        // ─── EDITAR SITE ───
         function salvarHero() {
             const config = getSiteConfig();
             config.titulo = document.getElementById('editTitulo').value || config.titulo;
             config.descricao = document.getElementById('editDescricao').value || config.descricao;
-            localStorage.setItem('quobileSiteConfig', JSON.stringify(config));
+            localStorage.setItem('quomionSiteConfig', JSON.stringify(config));
+            aplicarConfigSite();
             document.getElementById('heroStatus').textContent = '✅ Hero salvo!';
             setTimeout(() => document.getElementById('heroStatus').textContent = '', 2000);
-        }
-
-        function salvarMarca() {
-            const config = getSiteConfig();
-            config.marca = document.getElementById('editMarca').value || config.marca;
-            localStorage.setItem('quobileSiteConfig', JSON.stringify(config));
-            document.getElementById('marcaStatus').textContent = '✅ Marca salva!';
-            setTimeout(() => document.getElementById('marcaStatus').textContent = '', 2000);
+            mostrarAlerta('Hero do site atualizado!', 'success');
         }
 
         function salvarCores() {
             const config = getSiteConfig();
             config.corPrimaria = document.getElementById('corPrimaria').value;
             config.corSecundaria = document.getElementById('corSecundaria').value;
-            localStorage.setItem('quobileSiteConfig', JSON.stringify(config));
+            localStorage.setItem('quomionSiteConfig', JSON.stringify(config));
+            aplicarConfigSite();
             document.getElementById('corStatus').textContent = '✅ Cores salvas!';
             setTimeout(() => document.getElementById('corStatus').textContent = '', 2000);
+            mostrarAlerta('Cores aplicadas!', 'success');
         }
 
-        // ─── GOOGLE LOGIN ───
-        function getGoogleClientId() {
-            return localStorage.getItem('quobileGoogleClientId') || '';
-        }
-
-        function salvarGoogleClientId() {
-            const id = document.getElementById('googleClientId').value.trim();
-            localStorage.setItem('quobileGoogleClientId', id);
-            document.getElementById('googleStatus').textContent = '✅ Client ID salvo!';
-            setTimeout(() => document.getElementById('googleStatus').textContent = '', 2000);
-            renderGoogleBtn();
-        }
-
-        function renderGoogleBtn() {
-            const clientId = getGoogleClientId();
-            if (!clientId) return;
-            const btn = document.getElementById('googleBtn');
-            if (!btn) return;
-            if (typeof google === 'undefined' || !google.accounts) {
-                setTimeout(renderGoogleBtn, 500);
-                return;
-            }
-            btn.innerHTML = '';
-            google.accounts.id.initialize({
-                client_id: clientId,
-                callback: handleGoogleCredential
-            });
-            google.accounts.id.renderButton(btn, {
-                type: 'standard', shape: 'pill', theme: 'outline',
-                text: 'signin_with', size: 'large', logo_alignment: 'left'
-            });
-        }
-
-        function handleGoogleCredential(response) {
+        function aplicarConfigSite() {
+            const config = getSiteConfig();
+            document.getElementById('heroTitulo').innerHTML = config.titulo + ' <span>Quomion</span>';
+            document.getElementById('heroDesc').textContent = config.descricao;
             try {
-                const parts = response.credential.split('.');
-                const payload = JSON.parse(atob(parts[1]));
-                const email = payload.email.toLowerCase();
-                if (ADMINS.includes(email)) {
-                    fecharModalAdmin();
-                    mostrarAdmin();
-                    localStorage.setItem('quobileAdminLogado', email);
-                    carregarDados();
-                } else {
-                    document.getElementById('erroLogin').textContent = 'Este e-mail não tem permissão de admin!';
-                    document.getElementById('erroLogin').style.display = 'block';
+                document.querySelectorAll('style')[0].sheet;
+            } catch(e) {}
+            // Apply via inline style
+            const styleTag = document.createElement('style');
+            styleTag.id = 'dynamicTheme';
+            const existing = document.getElementById('dynamicTheme');
+            if (existing) existing.remove();
+            styleTag.id = 'dynamicTheme';
+            styleTag.textContent = `
+                .logo span, .section-title span, .hero h1 span,
+                .admin-sidebar .s-item.ativo, .stat-card .numero,
+                .produto-card ul li::before, .beneficio-card .content ul li::before,
+                .contato-links a, footer a, .modal input:focus, .card input:focus,
+                .card textarea:focus {
+                    color: ${config.corPrimaria} !important;
                 }
-            } catch (e) {
-                document.getElementById('erroLogin').textContent = 'Erro ao autenticar com Google.';
-                document.getElementById('erroLogin').style.display = 'block';
+                header, .admin-header {
+                    border-bottom-color: ${config.corPrimaria} !important;
+                }
+                .hero .btn, .modal button, .card .btn:not(.btn-danger):not(.btn-success):not(.btn-warning),
+                .produto-card .comprar-btn, .hero .btn {
+                    background: linear-gradient(135deg, ${config.corSecundaria}, ${config.corPrimaria}) !important;
+                }
+                .hero .btn:hover, .modal button:hover, .card .btn:hover {
+                    box-shadow: 0 4px 15px ${config.corPrimaria}66 !important;
+                }
+            `;
+            document.head.appendChild(styleTag);
+            document.getElementById('corPrimaria').value = config.corPrimaria;
+            document.getElementById('corSecundaria').value = config.corSecundaria;
+        }
+
+        function resetarTudo() {
+            if (!confirm('⚠️ TEM CERTEZA? Isso vai remover TODOS os dados:\n\n- Contas admin\n- Máquinas registradas\n- Bloqueios\n- Keys\n- Configurações do site\n- Código personalizado\n\nEsta ação não pode ser desfeita!')) return;
+            if (!confirm('Confirmação final. Deseja realmente resetar TUDO?')) return;
+            localStorage.removeItem('quomionAdmins');
+            localStorage.removeItem('quomionMaquinas');
+            localStorage.removeItem('quomionKeys');
+            localStorage.removeItem('quomionSiteConfig');
+            localStorage.removeItem('quomionCodigoSite');
+            localStorage.removeItem('quomionAdminLogado');
+            localStorage.removeItem('quomionMachineFP');
+            mostrarAlerta('Todos os dados foram resetados! Recarregue a página.', 'info');
+            setTimeout(() => location.reload(), 1500);
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // ALERTAS
+        // ═══════════════════════════════════════════════════════════════
+        function mostrarAlerta(msg, tipo) {
+            const el = document.getElementById('adminAlert');
+            el.textContent = msg;
+            el.className = 'alert alert-' + tipo + ' show';
+            setTimeout(() => el.classList.remove('show'), 4000);
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // CARREGAR ADMIN
+        // ═══════════════════════════════════════════════════════════════
+        function carregarAdmin() {
+            const config = getSiteConfig();
+            document.getElementById('editTitulo').value = config.titulo;
+            document.getElementById('editDescricao').value = config.descricao;
+            document.getElementById('corPrimaria').value = config.corPrimaria;
+            document.getElementById('corSecundaria').value = config.corSecundaria;
+            document.getElementById('editorCodigo').value = getCodigoSalvo() || obterHtmlOriginal();
+            registrarMaquinaAtual();
+            exibirMinhaMaquina();
+            atualizarListasMaquinas();
+            atualizarListaContas();
+            atualizarListaKeys();
+            renderizarKeysSite();
+            atualizarDashboard();
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // INICIALIZAÇÃO
+        // ═══════════════════════════════════════════════════════════════
+        (function init() {
+            registrarMaquinaAtual();
+            if (verificarBloqueio()) return;
+            aplicarConfigSite();
+            renderizarKeysSite();
+
+            if (localStorage.getItem('quomionAdminLogado')) {
+                abrirPainel();
             }
-        }
-
-        // ─── AUTO LOGIN ───
-        if (localStorage.getItem('quobileAdminLogado')) {
-            mostrarAdmin();
-            carregarDados();
-        }
-
-        renderizarKeysSite();
+        })();
     </script>
-</body>
-</html>
+
+
+</body></html>
